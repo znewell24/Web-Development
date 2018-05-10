@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="http://157.201.194.254/~newell/mystyle.css" rel="stylesheet" type="text/css" />
+    <title>Largest Cities</title>
+
+    <script>
+        var choice;
+        function country(which) {
+            choice = which;
+            httpRequest = new XMLHttpRequest();
+            httpRequest.onreadystatechange = callback;
+            if (which == 'usa') {
+                httpRequest.open("GET", 'http://157.201.194.254/~ercanbracks/usa.txt', true);
+            } else if (which == 'canada') {
+                httpRequest.open("GET", 'http://157.201.194.254/~ercanbracks/canada.txt', true);
+            } else if (which == 'mexico') {
+                httpRequest.open("GET", 'http://157.201.194.254/~ercanbracks/mexico.txt', true);
+            } else if (which == 'russia') {
+                httpRequest.open("GET", 'http://157.201.194.254/~ercanbracks/russia.txt', true);
+            }
+            httpRequest.send();
+        }
+        function callback() {
+            if (httpRequest.readyState == 4) {
+                if (httpRequest.status == 200) {
+                    var text = '<pre>';
+                    text += httpRequest.responseText;
+                    text += '</pre>';
+                    document.getElementById("cities").innerHTML = text;
+                }
+            }
+        }
+        function json(path) {
+            var name = path;
+            httpRequest2 = new XMLHttpRequest();
+            httpRequest2.onreadystatechange = callback2;
+            if (name == "json.txt") {
+                httpRequest2.open("GET", 'http://157.201.194.254/~ercanbracks/json.txt', true);
+            } else {
+                httpRequest2.open("GET", 'http://157.201.194.254/~ercanbracks/json1.txt', true);
+            }
+            httpRequest2.send();
+        }
+        function callback2() {
+            if (httpRequest2.readyState == 4) {
+                if (httpRequest2.status == 200) {
+                    var obj = JSON.parse(httpRequest2.responseText);
+                    var out = '<table style="margin:auto"><tr><th>First</th><th>Last</th><th>Address</th><th>Major</th><th>GPA</th></tr>';
+                    for (var i = 0; i < obj.students.length; i++)
+                    {
+                        out += '<tr> <td>' + obj.students[i].first + '</td>' +
+                            '<td>' + obj.students[i].last + '</td>' +
+                            '<td>' + obj.students[i].address.city + " " + obj.students[i].address.state + " " + obj.students[i].address.zip + '</td>' +
+                            '<td>' + obj.students[i].major + '</td>' +
+                            '<td>' + obj.students[i].gpa + '</td>' +
+                            '</tr>';
+                    }
+                    out += '</table>';
+                    document.getElementById("jsontest").innerHTML = out;
+                }
+            }
+        }
+    </script>
+
+</head>
+<body>
+    <div id="main" style="text-align:center">
+        <h1>Find the 10 Largest Cities in Your Country</h1>
+        <h3>Click a button below!</h3>
+        <button type="button" onclick="country('usa')">USA</button>
+        <button type="button" onclick="country('canada')">Canada</button>
+        <button type="button" onclick="country('mexico')">Mexico</button>
+        <button type="button" onclick="country('russia')">Russia</button>
+        <br />
+        <div id="cities"></div>
+    
+        <h2>Json testing</h2>
+        
+        Enter Json url: <input type="text" id="path" name="url" value="json.txt" /><br />
+        <button type="button" onclick="json(document.getElementById('path').value)">Load Json</button>
+        
+
+
+        <div id="jsontest" style="text-align:center"></div>
+    </div>
+</body>
+</html>
