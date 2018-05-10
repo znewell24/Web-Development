@@ -1,0 +1,70 @@
+ <html>
+ <head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link href="mystyle.css" rel="stylesheet" type="text/css" />
+	<title>Order Confirmation</title>
+ </head>
+ <body>
+ <div id="main" style="text-align:center">
+	<h1>Confirm Your Order</h1>
+	
+	<h3><?php echo $_GET['first']; ?>  <?php echo $_GET['last']; ?></h3>
+	<p>Address: <?php echo $_GET['address']; ?></p>
+	<p>Phone: <?php echo $_GET['phone'] ?></p>
+	<?php
+		$total;
+		echo "<h2>Products:</h2>";
+		if ($_GET['32in']) {
+			echo "<p>" . $_GET['32in'] . " $150</p>";
+			$total += 150;
+		} if ($_GET['40in']) {
+			echo "<p>" . $_GET['40in'] . " $200</p>";
+			$total += 200;
+		} if ($_GET['50in']) {
+			echo "<p>" . $_GET['50in'] . " $300</p>";
+			$total += 300;
+		} if ($_GET['64in']) {
+			echo "<p>" . $_GET['64in'] . " $450</p>";
+			$total += 450;
+		}
+		echo "<h3>Total: </h3>" . $total;
+		echo "<h3>Card Type: " . $_GET['cardType'];
+		
+		$m;
+		$y = $_GET['year'];
+		if ($_GET['month'] == 01) {
+			$m = "January";
+		} elseif ($_GET['month'] == 02) {
+			$m = "Febuary";
+		} elseif ($_GET['month'] == 03) {
+			$m = "March";
+		} elseif ($_GET['month'] == 04) {
+			$m = "April";
+		} elseif ($_GET['month'] == 05) {
+			$m = "May";
+		} elseif ($_GET['month'] == 06) {
+			$m = "June";
+		} elseif ($_GET['month'] == 07) {
+			$m = "July";
+		} elseif ($_GET['month'] == 08) {
+			$m = "August";
+		} elseif ($_GET['month'] == 09) {
+			$m = "September";
+		} elseif ($_GET['month'] == 10) {
+			$m = "October";
+		} elseif ($_GET['month'] == 11) {
+			$m = "November";
+		} elseif ($_GET['month'] == 12) {
+			$m = "December";
+		} 
+
+		echo "<h3>Expiration Date: " . $m . ", " . $y;
+	?>
+
+	<form action="assign10_a.php" method="get">
+		<button type="submit" name="confirm" value="confirm">Confirm Purchase</button>
+		<button type="submit" name="cancel" value="cancel">Cancel Order</button>
+	</form>
+	</div>
+ </body>
+ </html>
