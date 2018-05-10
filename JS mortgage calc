@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link href="mystyle.css" rel="stylesheet" type="text/css" />
+    <title>Mortgage Calculator</title>
+    <script>
+        var isValid = true;
+        function calcMortgage() {
+            var intrest = document.getElementById("rate").value;
+            var years = document.getElementById("years").value;
+            var amount = document.getElementById("amount").value;
+
+            var monthIntrest = (intrest / 100) / 12;
+            var numPayments = years * 12;
+            var principle = amount;
+
+            var monthlyPayment = (principle * ((monthIntrest * Math.pow(1 + monthIntrest, numPayments))
+                / (Math.pow(1 + monthIntrest, numPayments) - 1)));
+            document.getElementById("payment").innerHTML = monthlyPayment.toFixed(2);
+        } function validate() {
+            var rate = document.form.rate.value;
+            var years = document.form.years.value;
+            var amount = document.form.amount.value;
+
+            if (document.getElementById("rate").value == "" || rate == null) {
+                alert("APR is a required field!")
+                document.getElementById("rate").focus();
+                isValid = false;
+            } else if (document.getElementById("years").value == "" || years == null) {
+                alert("Loan Term is a required field!")
+                document.getElementById("years").focus();
+                isValid = false;
+            } else if(document.getElementById("amount").value == "" || amount == null) {
+                alert("Loan Amount is a required field!")
+                document.getElementById("amount").focus();
+                isValid = false;
+            }
+        } function check() {
+            validate();
+            if (isValid) {
+                calcMortgage();
+            } else {
+                isValid = true;
+            }
+            
+        }
+    </script>
+</head>
+<body>  
+    
+    <div id="main" style="max-width:500px">
+        <h1 style="text-align:center">Mortgage Calculator</h1>
+        <form action="" name="form" style="text-align:center; font-size:large">
+            APR:
+            <input type="text" id="rate" name="rate" placeholder="5.25"/><br />
+            <script>document.getElementById("rate").focus();</script>
+            Loan Term:
+            <input type="text" id="years" name="years" placeholder="years" /><br />
+            Loan Amount:
+            <input type="text" id="amount" name="amount" placeholder="100000" /><br />
+            <button type="reset" value="Clear All">Clear All</button>
+        </form>
+        
+        <div style="text-align:center">
+            <button type="button" onclick="check()">Calculate Mortgage</button>
+            <br /><hr />
+            <h3>Monthly Payment:</h3>
+            <p id="payment" style="text-align:center"></p>
+        </div>
+    </div>
+</body>
+</html>
