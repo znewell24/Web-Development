@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link href="mystyle.css" rel="stylesheet" type="text/css" />
+    <title>Order Form</title>
+    <style>
+        table {
+            border: none;
+            margin: auto;
+            align-self: center;
+        }
+
+        #main {
+            max-height: 1000px;
+        }
+    </style>
+    <script>
+
+        function validatePhone() {
+            var pattern = /^\d{3}-\d{3}-\d{4}$/;
+            if (document.getElementById("phone").value.match(pattern))
+            {
+                return true;
+            } else {
+                return false;
+            }
+        }
+        function findTotal() {
+            var total = 0;
+            if (document.getElementById("32in").checked) {
+                total += 150;
+            }
+            if (document.getElementById("40in").checked) {
+                total += 200;
+            }
+            if (document.getElementById("50in").checked) {
+                total += 300;
+            }
+            if (document.getElementById("64in").checked) {
+                total += 450;
+            }
+            document.getElementById("totaltext").innerHTML = total;
+        }
+        function validateCredit() {
+            var pattern = /^\d{4}-? ?\d{4}-? ?\d{4}-? ?\d{4}$/;
+            if (document.getElementById("credit").value.match(pattern)) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+        function validate() {
+            if (validatePhone() && validateCredit()) {
+                document.getElementById("thanks").innerHTML = "Thank you for your purchase!"
+                return true;
+            } else {
+                if (!validatePhone()) {
+                    document.getElementById("phone").focus();
+                    document.getElementById("phone").select();
+                    document.getElementById("phoneError").innerHTML = "Invalid Phone Number!"
+                } else {
+                    document.getElementById("credit").focus();
+                    document.getElementById("credit").select();
+                    document.getElementById("creditError").innerHTML = "Invalid Credit Card Number!"
+                }
+                return false;
+            }
+        }
+    </script>
+</head>
+<body>
+    <div id="main">
+        <h1 style="text-align:center">Product Order Form</h1>
+        <form action="assign10.php" method="get" onsubmit="return validate()">
+            <table>
+                <tr>
+                    <td>First Name:</td>
+                    <td><input type="text" id="firstName" name="first" placeholder="John" /></td>
+                </tr>
+                <tr>
+                    <td>Last Name:</td>
+                    <td><input type="text" id="lastName" name="last" placeholder="Doe" /></td>
+                </tr>
+                <tr>
+                    <td>Address:</td>
+                    <td>
+                        <textarea id="address" rows="8" cols="10" name="address">
+                    </textarea>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Phone:</td>
+                    <td><input type="text" id="phone" name="phone" placeholder="208-555-5555" /></td>
+                    <td><p id="phoneError"></p></td>
+                </tr>
+            </table>
+            <table style="border:double">
+                <tr>
+                    <td>Product(s):</td>
+                    <td><input type="checkbox" id="32in" name="32in" value="32in" onclick="findTotal()" />32in TV $150</td>
+                    <td><input type="checkbox" id="40in" name="40in" value="40in" onclick="findTotal()" />40in TV $200</td>
+                    <td><input type="checkbox" id="50in" name="50in" value="50in" onclick="findTotal()" />50in TV $300</td>
+                    <td><input type="checkbox" id="64in" name="64in" value="64in" onclick="findTotal()" />64in TV $450</td>
+                </tr>
+                <tr>
+                    <td>Total:</td>
+                    <td id="totaltext"></td>
+                </tr>
+            </table>
+            <table>
+                <tr>
+                    <td>Credit Card Type:</td>
+                    <td><input type="radio" id="visa" name="cardType" value="visa" />Visa</td>
+                    <td><input type="radio" id="master" name="cardType" value="master" />Mastercard</td>
+                    <td><input type="radio" id="express" name="cardType" value="express" />American Express</td>
+                </tr>
+            </table>
+            <table>
+                <tr>
+                    <td>Credit Card #:</td>
+                    <td>
+                        <input type="text" id="credit" name="credit"
+                               placeholder="5555555555555555" />
+                    </td>
+                    <td><p id="creditError"></p></td>
+                </tr>
+                <tr>
+                    <td>Expiration Date:</td>
+                    <td><input type="number" min="01" max="12" id="month" name="month" placeholder="month (02)" /></td>
+                    <td><input type="number" min="18" value="18" id="year" name="year" placeholder="year (18)" /></td>
+                </tr>
+            </table>
+            <div style="text-align:center">
+                <button type="submit" onclick="">Submit Order</button>
+                <button type="reset">Clear Order</button>
+                <p style="text-align:center" id="thanks"></p>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
