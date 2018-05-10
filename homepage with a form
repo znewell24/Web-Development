@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>
+        Zach Newell's Home Page
+    </title>
+    <style>
+        body {
+            background-color: gray;
+            text-align: center;
+            color: white;
+        }
+
+        a {
+            color: yellowgreen;
+        }
+
+        blockquote {
+            color: white;
+        }
+    </style>
+</head>
+
+<body id="top">
+    <p>Back to <a href="http://157.201.194.254/~newell/index.html" style="color: yellowgreen"> CS 213 Assignments</a></p>
+    <hr>
+    <header>
+        <h1 style="'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif">
+        Welcome to Zach Newell's Home Page
+        </h1>
+        <h5><a href="#footer">Jump to contact info</a>
+            <a href="#table">Jump to winter schedule</a>
+            <a href="#links">Jump to useful links</a></h5>
+        <h4>About me</h4>
+    </header>
+    <p>
+        My name is Zach Newell, I was born and raised in Decatur Illinois, and I am a CS major.
+        <br>
+        I love most outdoor activities, especially rafting, fishing, hiking, and biking.
+        <br>
+        My little family consists of my wife, Caroline, and our family dog, Indy.
+        <br>
+        A Favorite quote of mine is:
+        <br>
+        <blockquote style="font-family: Algerian ">
+            Not all those who wander are lost. - J. R. R. Tolkein
+        </blockquote>
+    </p>
+
+
+        <img src="https://scontent-sea1-1.xx.fbcdn.net/v/t1.0-9/18700270_10213122567161978_7079777420221653211_n.jpg?oh=c86025986a56d4e18946022ac177a1f1&oe=5AE680E1"
+             alt="Family Picture" style="width: 375px; height: 450px; font-family: Calibri">
+
+        <i><br>Family picture on Stanley Lake trail, Stanley ID<br><br></i>
+
+        <h2>Winter 2018 Schedule</h2>
+        <table id="table" style="margin: 0px auto;">
+            <tr>
+                <th>Course #</th>
+                <th>Course Description</th>
+                <th>Sec #</th>
+                <th>Class Time</th>
+                <th>Location</th>
+            </tr>
+            <tr>
+                <td>FDREL 327</td>
+                <td>Pearl of Great Price</td>
+                <td>01</td>
+                <td>MW-10:15 - 11:15 AM</td>
+                <td>Taylor Building, 130</td>
+            </tr>
+            <tr>
+                <td>CS 213</td>
+                <td>Web Engineering 1</td>
+                <td>01</td>
+                <td>TR-9:45 - 11:15 AM</td>
+                <td>STC, 398</td>
+            </tr>
+            <tr>
+                <td>CS 235</td>
+                <td>Data Structures</td>
+                <td>02</td>
+                <td>MWF-2:00 - 3:00 PM</td>
+                <td>STC, 385</td>
+            </tr>
+            <tr>
+                <td>CS 237</td>
+                <td>Discrete Mathematics 1</td>
+                <td>02</td>
+                <td>TR-12:45 - 1:45 PM</td>
+                <td>STC, 285</td>
+            </tr>
+            <tr>
+                <td>CS 246</td>
+                <td>Software Design and Development</td>
+                <td>02</td>
+                <td>MWF-12:45 - 1:45 AM</td>
+                <td>STC, 231</td>
+            </tr>
+        </table>
+
+        <h2 id="links">Useful links</h2>
+        <ul>
+            <li><a href="https://byui.brightspace.com/d2l/home" target="_blank">Ilearn</a></li>
+            <li>
+                <a href="http://emp.byui.edu/ercanbracks/CS213.htm" target="_blank">
+                    Web Engineering 1 Homepage
+                </a>
+            </li>
+            <li><a href="https://www.w3schools.com/" target="_blank">W3schools html help</a></li>
+        </ul>
+
+
+        <footer id="footer">
+            <address>
+                <br>Written by Zach Newell<br>
+                Contact me at new14008@byui.edu<br>
+                <a href="http://www.byui.edu" target="_blank">
+                    <img src="http://www.byui.edu/Images/Branding/Official-Logo.jpg" alt="BYU-I logo" />
+                </a>
+            </address>
+        </footer>
+    <div style="display:block; border:thick; background-color:black">
+        <form action="">
+            <h2>Contact this Author</h2>
+            First Name:<br />
+            <input type="text" name="firstname" placeholder="John" 
+                   style="background-color:lightgray" required/><br />
+            Last name:<br />
+            <input type="text" name="lastname" placeholder="Doe" 
+                   style="background-color:lightgray" required/><br />
+            Email:<br />
+            <input type="text" name="email" placeholder="johndoe@email.com"
+                   style="background-color:lightgray" required/><br />
+        
+            <input type="radio" name="gender" value="male" checked />Male
+            <input type="radio" name="gender" value="female" /> Female
+            <input type="radio" name="gender" value="other" /> Other<br />
+
+            <h4>How did you find this site?</h4>
+            <input type="checkbox" name="come from" value="School" />School
+            <input type="checkbox" name="come from" value="Browsing" />Browsing
+            <input type="checkbox" name="come from" value="Instructor" />Course Instructor
+            <input type="checkbox" name="come from" value="BYUI" />General BYUI
+            <input type="checkbox" name="come from" value="Other" />Other
+
+            <h4>I am a(n)</h4>
+            <select name="dropdown">
+                <option value="nothing" selected disabled>Select</option>
+                <option value="Instructor">Instructor</option>
+                <option value="Student">Student</option>
+                <option value="Employer">Employer</option>
+                <option value="Other">Other</option>
+            </select>
+
+            <h4>Message to Author:</h4>
+            <textarea name="message" rows="20" cols="30" 
+                      style="background-color:lightgray; align-content:initial">
+            </textarea><br />
+
+            <input type="submit" value="Submit" /><br />
+            <input type="reset" value="Reset" /><br />
+
+            
+        </form>
+    </div>
+    <p><a href="#top">Back to top</a></p>
+    
+
+</body>
+
+</html>
