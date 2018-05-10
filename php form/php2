@@ -1,0 +1,19 @@
+<html>
+ <head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link href="mystyle.css" rel="stylesheet" type="text/css" />
+	<title>Order</title>
+ </head>
+ <body>
+	<div id="main" style="text-align:center">
+	<?php
+		if ($_GET['confirm'] == 'confirm') {
+			echo "<h2>Thank you for your purchase!</h2>";
+		}
+		if ($_GET['cancel'] == 'cancel') {
+			echo "<h2>Your order has been canceled.</h2>";
+		}
+	?>
+	<div>
+ </body>
+ </html>
